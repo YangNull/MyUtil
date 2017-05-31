@@ -8,9 +8,7 @@ import com.yangkangjian.util.StringUtils;
 
 public class Test {
     public static void main(String[] args) {
-        System.out.println(StringUtils.isNullOrEmpty("\t"));
-        System.out.println(StringUtils.nullToEmpty(null).length());
-        System.out.println(StringUtils.emptyToNull(""));
+        System.out.println(StringUtils.isBlank(" T "));
     }
 
 }

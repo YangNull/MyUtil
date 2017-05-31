@@ -5,6 +5,7 @@ package com.yangkangjian.util;
  * Created by scott on 2017/5/31.
  */
 public final class StringUtils {
+    public static final String SPACE = " ";
     public static final String EMPTY = "";
     public static final String NULL = null;
 
@@ -12,7 +13,7 @@ public final class StringUtils {
     }
 
     public static boolean isNullOrEmpty(String string) {
-        return string == null || string.trim().isEmpty();
+        return string == null || string.isEmpty();
     }
 
     public static String emptyToNull(String string) {
@@ -23,4 +24,20 @@ public final class StringUtils {
         return (string == null) ? "" : string;
     }
 
+    public static boolean isBlank(String string) {
+        if (isNullOrEmpty(string)) {
+            return true;
+        }
+        int len = string.length();
+        for (int i = 0; i < len; i++) {
+            if (Character.isWhitespace(string.charAt(i)) == false) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean isNotBlank(String string) {
+        return !isBlank(string);
+    }
 }
