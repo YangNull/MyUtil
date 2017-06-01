@@ -1,5 +1,7 @@
 package com.yangkangjian.util;
 
+import static com.yangkangjian.base.Preconditions.checkNotNull;
+
 /**
  * 字符串工具类
  * Created by scott on 2017/5/31.
@@ -12,19 +14,19 @@ public final class StringUtils {
     private StringUtils() {
     }
 
-    public static boolean isNullOrEmpty(String string) {
+    public static boolean isNullOrEmpty(final String string) {
         return string == null || string.isEmpty();
     }
 
-    public static String emptyToNull(String string) {
+    public static String emptyToNull(final String string) {
         return isNullOrEmpty(string) ? null : string;
     }
 
-    public static String nullToEmpty(String string) {
+    public static String nullToEmpty(final String string) {
         return (string == null) ? "" : string;
     }
 
-    public static boolean isBlank(String string) {
+    public static boolean isBlank(final String string) {
         if (isNullOrEmpty(string)) {
             return true;
         }
@@ -37,7 +39,35 @@ public final class StringUtils {
         return true;
     }
 
-    public static boolean isNotBlank(String string) {
+    public static boolean isNotBlank(final String string) {
         return !isBlank(string);
+    }
+
+    public static String padStart(final String string, int minLength, char pad) {
+        checkNotNull(string);
+        int len = string.length();
+        if (len >= minLength) {
+            return string;
+        }
+        StringBuilder builder = new StringBuilder(minLength);
+        for (int i = len; i < minLength; i++) {
+            builder.append(pad);
+        }
+        builder.append(string);
+        return builder.toString();
+    }
+
+    public static String padEnd(final String string, int minLength, char pad) {
+        checkNotNull(string);
+        int len = string.length();
+        if (len >= minLength) {
+            return string;
+        }
+        StringBuilder builder = new StringBuilder(minLength);
+        builder.append(string);
+        for (int i = len; i < minLength; i++) {
+            builder.append(pad);
+        }
+        return builder.toString();
     }
 }

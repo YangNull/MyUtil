@@ -1,5 +1,7 @@
 package com.yangkangjian;
 
+import com.google.common.base.Optional;
+import com.google.common.base.Strings;
 import com.yangkangjian.util.StringUtils;
 
 /**
@@ -8,7 +10,7 @@ import com.yangkangjian.util.StringUtils;
 
 public class Test {
     public static void main(String[] args) {
-        System.out.println(StringUtils.isBlank(" T "));
+        Optional<String> optional = Optional.of(null);
     }
 
 }
