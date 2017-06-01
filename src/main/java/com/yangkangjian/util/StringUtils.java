@@ -19,10 +19,12 @@ public final class StringUtils {
     }
 
     public static String emptyToNull(final String string) {
+
         return isNullOrEmpty(string) ? null : string;
     }
 
     public static String nullToEmpty(final String string) {
+
         return (string == null) ? "" : string;
     }
 
@@ -32,6 +34,7 @@ public final class StringUtils {
         }
         int len = string.length();
         for (int i = 0; i < len; i++) {
+            //是否包含空格
             if (Character.isWhitespace(string.charAt(i)) == false) {
                 return false;
             }
@@ -41,6 +44,35 @@ public final class StringUtils {
 
     public static boolean isNotBlank(final String string) {
         return !isBlank(string);
+    }
+
+    /**
+     * 检查参数数组之中是否有空值存在，如果有空值存在则返回true
+     *
+     * @param strings 要检查的参数数组
+     * @return
+     */
+    public static boolean isHasBlank(String... strings) {
+        int len = strings.length;
+        if (len == 0) {
+            return true;
+        }
+        for (int i = 0; i < len; i++) {
+            if (isBlank(strings[i])) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * 检查参数数组之中是否没有空值存在，如果没有空值存在则返回true
+     *
+     * @param strings 要检查的参数数组
+     * @return
+     */
+    public static boolean isNotHasBlank(String... strings) {
+        return !isHasBlank(strings);
     }
 
     public static String padStart(final String string, int minLength, char pad) {
